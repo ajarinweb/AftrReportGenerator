@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-title" content="Aftr Report">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <!-- Ikon Aplikasi SVG Inline (Tidak butuh file gambar luar) -->
+    <!-- Ikon Aplikasi SVG Inline -->
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2327ae60%22/><text x=%2250%22 y=%2254%22 font-family=%22Arial%22 font-size=%2250%22 fill=%22white%22 text-anchor=%22middle%22>📝</text></svg>">
     
     <!-- Manifest PWA Inline -->
@@ -270,7 +270,7 @@
 
         @media (max-width: 899px) {
             .preview-panel { display: none; }
-            .container { padding-top: 90px; padding-bottom: 120px; } /* Jarak aman pill navigation */
+            .container { padding-top: 70px; padding-bottom: 90px; } 
         }
         
         @media (min-width: 900px) {
@@ -300,7 +300,7 @@
 <div class="progressive-blur-top d-mobile-only"></div>
 <div class="progressive-blur-bottom d-mobile-only"></div>
 
-<!-- MOBILE FLOATING PILLS (True iOS Style) -->
+<!-- MOBILE FLOATING PILLS -->
 <div class="mobile-top-title d-mobile-only">✨ Aftr Sagan Report Tools</div>
 <div class="mobile-bottom-nav d-mobile-only">
     <button onclick="switchTab('form')" id="tab-form" class="active">📝 Input</button>
@@ -918,7 +918,7 @@ ${dynamicFormat1.trim()}`;
 ==================
 Grand Total : ${new Intl.NumberFormat('id-ID').format(sum_shifts)}`;
 
-        const report3 = `FORMAT REPORT
+        const report3 = `*Report Akhir Shift ${d('shift')}*
 ${getFormattedDate()}
 CABANG : Aftr Sagan
 Google Review : ${d('google_review') || 0} 
@@ -1026,4 +1026,4 @@ cust amount: Rp ${new Intl.NumberFormat('id-ID').format(cust_amount)}`;
 </script>
 
 </body>
-</html>
+    </html>
