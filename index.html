@@ -469,7 +469,7 @@
         </div>
         
         <div class="report-box">
-            <div class="report-header">Format 3: FORMAT REPORT Akhir</div>
+            <div class="report-header">Format 3: Report Akhir Shift</div>
             <textarea id="resultOutput3" readonly></textarea>
             <button onclick="copyToClipboard('resultOutput3')">📋 Copy Format 3</button>
         </div>
@@ -624,11 +624,11 @@
     };
 
     const DEFAULT_TEAM = {
-        "Lead": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Alip", "Fikri", "Pascal", "Raditya", "Wildan"],
-        "Kasir": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Alip", "Fikri", "Pascal", "Raditya", "Wildan"],
-        "GRO mobile": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Alip", "Fikri", "Pascal", "Raditya", "Wildan"],
-        "Barista": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Alip", "Fikri", "Pascal", "Raditya", "Wildan"],
-        "Kitchen": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Alip", "Fikri", "Pascal", "Raditya", "Wildan"]
+        "Lead": ["Wildan"],
+        "Kasir": ["Rendy", "Zulfa", "Jia", "Rohit", "Wildan"],
+        "GRO mobile": ["Rendy", "Zulfa", "Jia", "Rohit", "Jeki", "Arul", "Novit", "Adam", "Wildan"],
+        "Barista": ["Alip", "Fikri", "Pascal", "Raditya", "Wildan"],
+        "Kitchen": ["Reynatta", "Abraham"]
     };
 
     let appMenu = JSON.parse(localStorage.getItem('aftr_menu_data')) || DEFAULT_MENU;
@@ -862,71 +862,65 @@
             dynamicFormat1 += "\n";
         }
 
-        const report1 = `Daily Sales Report
-*Aftr Sagan*  
-${getFormattedDate()} ======================
-Shift ${d('shift')}
-
-Petty Cash : Rp. ${formatPettyCash(d('petty_cash'))}
-Modal         : Rp. ${rp_pendapatan('modal')}
+        const report1 = `*Daily Sales Report Shift ${d('shift')}*
+- Cabang  : *Aftr Sagan*  
+- Tanggal : *${getFormattedDate()}* 
 =====================
-
-Makanan : ${itm('jml_makanan')}
-Minuman : ${itm('jml_minuman').replace(" Item", "")}
-
-
-Lead : ${d('lead')}
-Kasir : ${d('kasir')}
-GRO mobile : ${d('gro')}
-Barista : ${d('barista')}
-Kitchen : ${d('kitchen')}
-
-Total : Rp. ${rp_pendapatan('t_total')}
-Cash : Rp. ${rp_pendapatan('t_cash')}
-Transfer BCA : Rp. ${rp_pendapatan('t_tfbca')}
-Qris EDC BCA : Rp. ${rp_pendapatan('t_qrisbca')}
-Qris BCA Standing : Rp ${rp_pendapatan('t_qrisbca_s')}
-EDC BCA : Rp. ${rp_pendapatan('t_edcbca')}
-EDC BRI : Rp. ${rp_pendapatan('t_edcbri')}
-Qris EDC BRI : Rp ${rp_pendapatan('t_qrisbri')}
-Go Food : Rp ${rp_pendapatan('t_gofood')}
-Grab Food : Rp ${rp_pendapatan('t_grabfood')}
-Shopee Food : Rp ${rp_pendapatan('t_shopeefood')}
-Tiktok Go : Rp ${rp_pendapatan('t_tiktok')}
-
-*Air mineral* : ${itm('air_mineral')}
-
-
-Parkir motor : ${itm('parkir_motor')}
-Parkir mobil : ${itm('parkir_mobil')}
-
- ================
-
-*Google Review* : ${itm('google_review')}
-
+- Petty Cash : Rp. ${formatPettyCash(d('petty_cash'))}
+- Modal      : Rp. ${rp_pendapatan('modal')}
+=====================
+- Total Makanan : ${itm('jml_makanan')}
+- Total Minuman : ${itm('jml_minuman').replace(" Item", "")}
+======================
+- Lead    : ${d('lead')}
+- Kasir   : ${d('kasir')}
+- GRO     : ${d('gro')}
+- Barista : ${d('barista')}
+- Kitchen : ${d('kitchen')}
+======================
+- Total : Rp. *${rp_pendapatan('t_total')}*
+- Cash : Rp. ${rp_pendapatan('t_cash')}
+- Transfer BCA : Rp. ${rp_pendapatan('t_tfbca')}
+- QRIS EDC BCA : Rp. ${rp_pendapatan('t_qrisbca')}
+- QRIS BCA Standing : Rp. ${rp_pendapatan('t_qrisbca_s')}
+- EDC BCA : Rp. ${rp_pendapatan('t_edcbca')}
+- EDC BRI : Rp. ${rp_pendapatan('t_edcbri')}
+- QRIS EDC BRI : Rp. ${rp_pendapatan('t_qrisbri')}
+- GoFood : Rp. ${rp_pendapatan('t_gofood')}
+- GrabFood : Rp. ${rp_pendapatan('t_grabfood')}
+- Shopee Food : Rp. ${rp_pendapatan('t_shopeefood')}
+- Tiktok Go : Rp. ${rp_pendapatan('t_tiktok')}
+======================
+- Air mineral   : ${itm('air_mineral')}
+- Parkir motor  : ${itm('parkir_motor')}
+- Parkir mobil  : ${itm('parkir_mobil')}
+- Google Review : ${itm('google_review')}
+======================
 ${dynamicFormat1.trim()}`;
 
         const report2 = `*Report Revenue Shift ${d('shift')}*
-- Cabang : Aftr Sagan
-- Tanggal : ${getFormattedDate()}
-- kendala/urgent: ${d('kendala')}
-- Greview : ${d('google_review') || 0}
+- Cabang : *Aftr Sagan*
+- Tanggal : *${getFormattedDate()}*
+- Kendala/Urgent: ${d('kendala')}
+- Google Review : ${d('google_review') || 0}
 ==================
 - Shift 1 : Rp. ${new Intl.NumberFormat('id-ID').format(r1)}
 - Shift 2 : Rp. ${new Intl.NumberFormat('id-ID').format(r2)}
 - ⁠Shift 3 : Rp. ${new Intl.NumberFormat('id-ID').format(r3)}
 ==================
-Grand Total : ${new Intl.NumberFormat('id-ID').format(sum_shifts)}`;
+Grand Total : Rp. ${new Intl.NumberFormat('id-ID').format(sum_shifts)}`;
 
         const report3 = `*Report Akhir Shift ${d('shift')}*
-${getFormattedDate()}
-CABANG : Aftr Sagan
-Google Review : ${d('google_review') || 0} 
-Makanan / Pastry : Rp ${new Intl.NumberFormat('id-ID').format(f3_makanan)}
-Minuman :Rp ${new Intl.NumberFormat('id-ID').format(f3_minuman_total)}
-Parkir:Rp ${new Intl.NumberFormat('id-ID').format(f3_parkir)}
-Grand Total :Rp ${new Intl.NumberFormat('id-ID').format(f3_grand)}
-cust amount: Rp ${new Intl.NumberFormat('id-ID').format(cust_amount)}`;
+- Cabang : *Aftr Sagan*
+- Tanggal : *${getFormattedDate()}*
+- Google Review : ${d('google_review') || 0}
+==================
+- Makanan/Pastry : Rp. ${new Intl.NumberFormat('id-ID').format(f3_makanan)}
+- Minuman : Rp. ${new Intl.NumberFormat('id-ID').format(f3_minuman_total)}
+- Parkir : Rp. ${new Intl.NumberFormat('id-ID').format(f3_parkir)}
+- Cust Amount : Rp. ${new Intl.NumberFormat('id-ID').format(cust_amount)}
+==================
+Grand Total : Rp. ${new Intl.NumberFormat('id-ID').format(f3_grand)}`;
 
         document.getElementById('resultOutput1').value = report1;
         document.getElementById('resultOutput2').value = report2;
